@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_python3_ldap",
     "jobs",
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +129,13 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LDAP_AUTH_URL = "ldap://"
+LDAP_AUTH_USE_TLS = False
+LDAP_AUTH_USE_FIELDS = {
+    "username": "cn",
+    "first_name": "givenName",
+    "last_name": "sn",
+    "email": "mail",
+}
+LDAP_AUTH_USER_LOOKUP_FIELDS = ("username", "first_name", "last_name", "email")
