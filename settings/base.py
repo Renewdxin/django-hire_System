@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,7 +58,7 @@ ROOT_URLCONF = "hire_management.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'hire_management/templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -72,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "hire_management.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -86,6 +86,7 @@ DATABASES = {
         'PORT': '3307',                 # 数据库端口，默认3306
     }
 }
+
 
 
 
@@ -111,6 +112,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
+LANGUAGES = [
+    ('zh-hans', _('Chinese')),
+    ('en', _('English')),
+]
+
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
@@ -119,11 +125,21 @@ USE_I18N = True
 
 USE_TZ = True
 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = '/static/'
+STATIC_ROOT = 'static'
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = '/'
+SIMPLE_BACKEND_REDIRECT_URL = '/accounts/login/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -171,7 +187,7 @@ AUTHENTICATION_BACKENDS = {"django_python3_ldap.auth.LDAPBackend",'django.contri
 DINGTALK_WEB_HOOK = ""
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LOG_DIR = "/data/logs/recruitment/"
+LOG_DIR = "/data/logs/hire_management/"
 
 LOGGING = {
     'version': 1,

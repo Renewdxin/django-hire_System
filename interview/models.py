@@ -42,13 +42,13 @@ class Candidate(models.Model):
     first_score = models.DecimalField(decimal_places=1, null=True, max_digits=2, blank=True, verbose_name=u'初试分',
                                       help_text=u'1-5分，极优秀: >=4.5，优秀: 4-4.4，良好: 3.5-3.9，一般: 3-3.4，较差: <3分')
     first_learning_ability = models.DecimalField(decimal_places=1, null=True, max_digits=2, blank=True,
-                                                 verbose_name=u'学习能力得分')
+                                                 verbose_name='学习能力得分')
     first_professional_competency = models.DecimalField(decimal_places=1, null=True, max_digits=2, blank=True,
                                                         verbose_name=u'专业能力得分')
     first_advantage = models.TextField(max_length=1024, blank=True, verbose_name=u'优势')
     first_disadvantage = models.TextField(max_length=1024, blank=True, verbose_name=u'顾虑和不足')
     first_result = models.CharField(max_length=256, choices=FIRST_INTERVIEW_RESULT_TYPE, blank=True,
-                                    verbose_name=u'初试结果')
+                                    verbose_name='初试结果')
     first_recommend_position = models.CharField(max_length=256, blank=True, verbose_name=u'推荐部门')
     first_interviewer_user = models.ForeignKey(User, related_name='first_interviewer_user', blank=True, null=True, on_delete=models.CASCADE, verbose_name=u'面试官')
 

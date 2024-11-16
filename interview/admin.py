@@ -163,4 +163,3 @@ class CandidateAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Candidate, CandidateAdmin)
-

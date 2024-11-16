@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.utils.translation import gettext_lazy as _
 
 urlpatterns = [
     path("", include("jobs.urls")),  # 根路径，去掉正则表达式符号
     path("admin/", admin.site.urls),
 ]
+
+# 自动翻译
+admin.site.site_header = _("Hire Management")
