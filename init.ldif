@@ -1,0 +1,16 @@
+dn: dc=ihopeit,dc=com
+objectClass: top
+objectClass: domain
+dc: ihopeit
+
+dn: ou=users,dc=ihopeit,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: users
+
+dn: cn=testuser,ou=users,dc=ihopeit,dc=com
+objectClass: inetOrgPerson
+cn: testuser
+sn: User
+mail: testuser@ihopeit.com
+givenName: Test
